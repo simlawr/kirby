@@ -32,9 +32,9 @@ window.panel.plugin = function (plugin, parts) {
   });
 
   // created callback
-  resolve(parts, "created", function (name, options) {
-    window.panel.plugins["created"].push(options);
-  });
+  if (parts["created"]) {
+    window.panel.plugins["created"].push(parts["created"]);
+  }
 
   // Views
   resolve(parts, "views", function (name, options) {
