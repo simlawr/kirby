@@ -29,3 +29,8 @@ window.panel.app = new Vue({
     return h(App);
   }
 }).$mount("#app");
+
+// created plugin callbacks
+window.panel.plugins.created.forEach(plugin => {
+  plugin(window.panel.app);
+});

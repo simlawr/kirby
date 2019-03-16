@@ -2,6 +2,7 @@
 window.panel = window.panel || {};
 window.panel.plugins = {
   components: {},
+  created: [],
   fields: {},
   sections: {},
   routes: [],
@@ -28,6 +29,11 @@ window.panel.plugin = function (plugin, parts) {
   // Vue.use
   resolve(parts, "use", function (name, options) {
     window.panel.plugins["use"].push(options);
+  });
+
+  // created callback
+  resolve(parts, "created", function (name, options) {
+    window.panel.plugins["created"].push(options);
   });
 
   // Views
