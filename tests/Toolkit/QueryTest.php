@@ -108,6 +108,15 @@ class QueryTest extends TestCase
         $this->assertEquals('hello, world', $query->result());
     }
 
+    public function testObjectMethodWithMultipleArgumentsAndDot()
+    {
+        $query = new Query('user.says("I like", "love.jpg")', [
+            'user' => new QueryTestUser()
+        ]);
+
+        $this->assertEquals('I like love.jpg', $query->result());
+    }
+
     public function testObjectMethodWithInteger()
     {
         $query = new Query('user.age(12)', [
@@ -141,6 +150,24 @@ class QueryTest extends TestCase
         ]);
 
         $this->assertNull($query->result());
+    }
+
+    public function testObjectMethodWithArray()
+    {
+        $query = new Query('user.self.hasFavorites(["candy", "salad", 1])', [
+            'user' => new QueryTestUser()
+        ]);
+
+        $this->assertTrue($query->result());
+    }
+
+    public function testObjectMethodWithObjectMethodAsParameter()
+    {
+        $query = new Query('user.self.brainDump(user.self.brainDump("hello"))', [
+            'user' => new QueryTestUser()
+        ]);
+
+        $this->assertEquals('hello', $query->result());
     }
 
     public function scalarProvider()

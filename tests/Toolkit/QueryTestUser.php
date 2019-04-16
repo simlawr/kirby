@@ -35,4 +35,14 @@ class QueryTestUser
     {
         return $dump;
     }
+
+    public function hasFavorites(array $array)
+    {
+        return in_array('candy', $array);
+    }
+
+    public function self()
+    {
+        return $this;
+    }
 }
