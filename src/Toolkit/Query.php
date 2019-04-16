@@ -36,9 +36,9 @@ class Query
      * Creates a new Query object
      *
      * @param string $query
-     * @param array  $data
+     * @param array|object $data
      */
-    public function __construct(string $query = null, array $data = [])
+    public function __construct(string $query = null, $data = [])
     {
         $this->query = $query;
         $this->data  = $data;
