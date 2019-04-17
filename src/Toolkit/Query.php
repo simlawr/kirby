@@ -14,7 +14,7 @@ namespace Kirby\Toolkit;
  */
 class Query
 {
-    const REGEX_PARTS      = '!([a-zA-Z_]*(\(.*\))?)\.|\([^\(]+\((*SKIP)(*FAIL)|\"[^"]+\"(*SKIP)(*FAIL)|\'[^\']+\'(*SKIP)(*FAIL)!';
+    const REGEX_PARTS      = '!([a-zA-Z_]*(\(.*?\))?)\.|\([^\(]+\((*SKIP)(*FAIL)|\"[^"]+\"(*SKIP)(*FAIL)|\'[^\']+\'(*SKIP)(*FAIL)!';
     const REGEX_METHOD     = '!\((.*)\)!';
     const REGEX_PARAMETERS = '!,|\[[^]]+\](*SKIP)(*FAIL)|\"[^"]+\"(*SKIP)(*FAIL)|\'[^\']+\'(*SKIP)(*FAIL)!';
 
