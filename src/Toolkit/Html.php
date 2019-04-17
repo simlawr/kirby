@@ -338,12 +338,8 @@ class Html
     {
         $rel = trim($rel);
 
-        if ($target === '_blank') {
-            if (empty($rel) === false) {
-                return $rel;
-            }
-
-            return trim($rel . ' noopener noreferrer', ' ');
+        if (empty($rel) === true && $target === '_blank') {
+          return 'noopener noreferrer';
         }
 
         return $rel;
