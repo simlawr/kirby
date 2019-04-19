@@ -336,13 +336,14 @@ class Html
      */
     public static function rel(string $rel = null, string $target = null)
     {
-        $rel = trim($rel);
-
-        if (empty($rel) === true && $target === '_blank') {
-          return 'noopener noreferrer';
-        }
-
-        return $rel;
+       // using 'noreferrer' by default offers the greatest 
+       // possible browser compatibility but can still be
+       // overridden with 'noopener' as required
+       if (Str::contains('noopener')) {
+         return trim($rel);
+       } else {
+         return trim($rel . 'noreferrer';
+       }
     }
 
     /**
